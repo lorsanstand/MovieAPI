@@ -19,7 +19,7 @@ def user_read():
 
 def user_write(users_list):
     with open(path, 'w') as file:
-        json.dump(users_list, file, ensure_ascii=True, indent=4)
+        json.dump(users_list, file, ensure_ascii=False, indent=4)
 
 
 class UsersBase(BaseModel):
