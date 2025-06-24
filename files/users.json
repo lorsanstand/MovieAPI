@@ -13,5 +13,20 @@
         "nickname": "stasik",
         "password": "sadSDADA",
         "id": 3
+    },
+    {
+        "nickname": "Pidor",
+        "password": "lorser2009",
+        "id": 4
+    },
+    {
+        "nickname": "Stasyan",
+        "password": "342432424",
+        "id": 5
+    },
+    {
+        "nickname": "pro",
+        "password": "noob",
+        "id": 6
     }
 ]

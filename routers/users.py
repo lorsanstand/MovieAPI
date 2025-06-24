@@ -1,25 +1,14 @@
 from fastapi import APIRouter, HTTPException, Depends, Header
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 import json
-from ..Dependices import check_token
-from typing import Optional, Annotated
+from ..Dependices import check_token, user_write, user_read
+from typing import Optional, Annotated, Self
 
 app = APIRouter(
     prefix='/users',
     tags=['users'],
     responses={404: {"description": "Not found"}}
 )
-
-path = 'files/users.json'
-
-def user_read():
-    with open(path, 'r') as file:
-        users_list = json.load(file)
-    return users_list
-
-def user_write(users_list):
-    with open(path, 'w') as file:
-        json.dump(users_list, file, ensure_ascii=False, indent=4)
 
 
 class UsersBase(BaseModel):
@@ -28,6 +17,15 @@ class UsersBase(BaseModel):
 
 class UserCreate(UsersBase):
     password: str = Field(..., min_length=3, max_length=15, description='User Password')
+
+    @field_validator('nickname')
+    def validate_nickname(cls, nickname: str) -> Self:
+        users_list = user_read()
+
+        if nickname in (user['nickname'] for user in users_list):
+            raise HTTPException(status_code=400, detail='A user with that name already exists')
+
+        return nickname
 
 
 class Users(UsersBase):
@@ -39,10 +37,6 @@ def create_user(data: UserCreate):
     data = data.model_dump()
 
     users_list = user_read()
-
-    for user in users_list:
-        if user['nickname'] == data['nickname']:
-            raise HTTPException(status_code=400, detail='A user with that name already exists')
 
     next_id = max(users_list, key=lambda x: x["id"])["id"] + 1
     data['id'] = next_id
