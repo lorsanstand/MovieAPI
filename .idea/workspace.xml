@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19b6a69b-6204-46f2-a301-f96131159c16" name="Changes" comment="" />
+    <list default="true" id="19b6a69b-6204-46f2-a301-f96131159c16" name="Changes" comment="add .gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750712764155</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add .gitignore">
+      <option name="closed" value="true" />
+      <created>1750849477844</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750849477844</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add .gitignore">
+      <option name="closed" value="true" />
+      <created>1750849598492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750849598492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +151,7 @@
     <MESSAGE value="Create" />
     <MESSAGE value="Create project" />
     <MESSAGE value="Create validation in movies.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create validation in movies.py" />
+    <MESSAGE value="add .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add .gitignore" />
   </component>
 </project>
