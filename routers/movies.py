@@ -12,8 +12,6 @@ app = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-path = 'files/movie.json'
-
 
 class Genres(str, Enum):
     fantasy = 'Фантастика'
@@ -38,7 +36,7 @@ class MoviesBase(BaseModel):
     @field_validator("release_date")
     def validate_release_date(cls, values: date) -> Self:
         if values and values >= datetime.now().date():
-            raise ValueError('Release date should be in the past')
+            raise HTTPException(status_code=400, detail='Release date should be in the past')
         return values
 
 
@@ -46,7 +44,7 @@ class MoviesCreate(MoviesBase):
     @field_validator('name')
     def validate_name(cls, name: str):
         if name in (movie['name'] for movie in movie_read()):
-            raise ValueError('A movie with this title has already been added')
+            raise HTTPException(status_code=400, detail='A movie with this title has already been added')
         return name
 
 
@@ -70,10 +68,10 @@ class UserCheck(BaseModel):
         nickname = values.get('nickname')
         password = values.get('password')
 
-        if any(password in user['password'] for user in user_read() if nickname in user['nickname']):
+        if any(password == user['password'] for user in user_read() if nickname in user['nickname']):
             return values
 
-        raise ValueError('password incorrect')
+        raise HTTPException(status_code=400, detail='password incorrect')
 
 
 

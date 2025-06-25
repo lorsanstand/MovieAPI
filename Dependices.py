@@ -4,6 +4,7 @@ import json
 
 path_movie = 'files/movie.json'
 path_users = 'files/users.json'
+path_reviews = 'files/reviews.json'
 
 def check_token(token: Annotated[str, Header()]):
     if token != '123456':
@@ -20,12 +21,23 @@ def movie_write(movie_list: list):
         json.dump(movie_list, file, ensure_ascii=False, indent=4)
 
 
-def user_read():
+def user_read() -> list:
     with open(path_users, 'r') as file:
         users_list = json.load(file)
     return users_list
 
 
-def user_write(users_list):
+def user_write(users_list: list):
     with open(path_users, 'w') as file:
         json.dump(users_list, file, ensure_ascii=False, indent=4)
+
+
+def review_read() -> list:
+    with open(path_reviews, 'r') as file:
+        users_list = json.load(file)
+    return users_list
+
+
+def review_write(review_list: list):
+    with open(path_reviews, 'w') as file:
+        json.dump(review_list, file, ensure_ascii=False, indent=4)

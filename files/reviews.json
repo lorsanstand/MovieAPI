@@ -1,0 +1,9 @@
+[
+    {
+        "movie_id": 5,
+        "grade": 1,
+        "description": "string",
+        "id": 1,
+        "user_id": 1
+    }
+]
